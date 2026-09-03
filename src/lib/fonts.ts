@@ -1,11 +1,13 @@
-import { Geist, Geist_Mono } from 'next/font/google';
+import { Inter, Sora } from 'next/font/google';
 
-export const fontSans = Geist({
-  variable: '--font-geist-sans',
+export const fontSans = Inter({
   subsets: ['latin'],
+  variable: '--font-sans',
+  display: 'swap',
 });
 
-export const fontMono = Geist_Mono({
-  variable: '--font-geist-mono',
+export const fontHeading = Sora({
   subsets: ['latin'],
+  variable: '--font-heading',
+  display: 'swap',
 });
