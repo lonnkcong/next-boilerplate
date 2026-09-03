@@ -26,7 +26,10 @@ export function Navbar() {
     <header className="bg-background/80 sticky top-0 z-40 w-full border-b backdrop-blur-md">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
         {/* Logo */}
-        <Link href="/" className="font-heading flex items-center gap-2 text-xl font-bold tracking-tight">
+        <Link
+          href="/"
+          className="font-heading flex items-center gap-2 text-xl font-bold tracking-tight"
+        >
           <span className="bg-primary text-primary-foreground flex h-8 w-8 items-center justify-center rounded-lg text-sm font-black">
             K
           </span>
@@ -56,7 +59,11 @@ export function Navbar() {
           {/* Mobile Sheet Drawer */}
           <div className="md:hidden">
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
-              <SheetTrigger render={<Button variant="ghost" size="icon" aria-label="Open menu" />}>
+              <SheetTrigger
+                render={
+                  <Button variant="ghost" size="icon" aria-label="Open menu" />
+                }
+              >
                 <Menu className="h-5 w-5" />
               </SheetTrigger>
               <SheetContent side="right" className="w-72">
@@ -75,7 +82,11 @@ export function Navbar() {
                     </Link>
                   ))}
                   <div className="pt-4">
-                    <Button className="w-full" size="sm" onClick={() => setIsOpen(false)}>
+                    <Button
+                      className="w-full"
+                      size="sm"
+                      onClick={() => setIsOpen(false)}
+                    >
                       Get Started
                     </Button>
                   </div>
