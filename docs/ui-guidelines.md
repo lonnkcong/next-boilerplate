@@ -96,12 +96,7 @@ All content pages use **`max-w-3xl mx-auto`** as the standard container. This ke
 </div>
 ```
 
-Deviations:
-
-- `max-w-5xl` — data-heavy pages (large tables, project grids)
-- `max-w-full` — full-bleed dashboards
-
-Always document why you deviated.
+All pages must use `max-w-3xl`.
 
 ### Spacing scale
 
@@ -427,7 +422,7 @@ Icon color conventions:
 ```
 [ ] File at: src/app/[locale]/(app)/<route>/page.tsx
 [ ] h1 uses: font-heading text-2xl font-bold tracking-tight
-[ ] Outer div: mx-auto max-w-3xl space-y-8 (or deviation documented)
+[ ] Outer div: mx-auto max-w-3xl space-y-8
 [ ] Every interactive element has a unique id attribute
 [ ] All links use @/i18n/navigation, not next/link
 [ ] No ad-hoc colors outside violet/indigo/semantic token palette

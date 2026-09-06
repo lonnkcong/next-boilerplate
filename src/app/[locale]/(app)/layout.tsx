@@ -15,7 +15,7 @@ export default async function AppLayout({
       <LeftRail />
       {/* Content offset: top-14 for navbar, pl-14 for left rail */}
       <main className="flex-1 pt-14 pl-14">
-        <div className="h-full p-6">{children}</div>
+        <div className="mx-auto max-w-3xl p-6">{children}</div>
       </main>
     </div>
   );

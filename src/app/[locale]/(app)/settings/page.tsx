@@ -20,7 +20,7 @@ import { Bell, Palette, Globe, KeyRound, Shield, Trash2 } from 'lucide-react';
 
 export default function SettingsPage() {
   return (
-    <div className="mx-auto max-w-3xl space-y-8">
+    <div className="space-y-8">
       {/* Page header */}
       <div>
         <h1 className="font-heading text-2xl font-bold tracking-tight">

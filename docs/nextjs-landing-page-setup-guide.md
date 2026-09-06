@@ -339,7 +339,7 @@ export function Hero() {
 ## 8. Responsive layout basics
 
 - Use Tailwind's breakpoint prefixes (`sm:`, `md:`, `lg:`, `xl:`, `2xl:`) mobile-first — write the smallest-screen styles unprefixed, then layer on larger breakpoints.
-- Use `max-w-7xl mx-auto px-4 sm:px-6 lg:px-8` as a standard content container.
+- Use `max-w-3xl mx-auto px-4 sm:px-6 lg:px-8` as a standard content container.
 - For nav, pair shadcn's `Sheet` component for a mobile drawer with a `NavigationMenu` (or plain flex links) hidden below `md:` and shown above it:
 
 ```tsx
