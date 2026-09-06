@@ -77,7 +77,7 @@ export function TopNav({ userEmail }: TopNavProps) {
               <DropdownMenuItem
                 render={
                   <Link
-                    href="/settings"
+                    href="/profile"
                     className="flex cursor-pointer items-center gap-2"
                   />
                 }

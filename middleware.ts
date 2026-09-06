@@ -8,7 +8,7 @@ const intlMiddleware = createMiddleware(routing);
 // Routes that require authentication
 const protectedRoutes = ['/dashboard', '/setup', '/settings'];
 // Routes that should redirect to dashboard if already authenticated
-const authRoutes = ['/login'];
+const authRoutes = ['/login', '/signup', '/forgot-password'];
 
 export default async function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
