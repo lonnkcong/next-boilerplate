@@ -1,13 +1,5 @@
-import { Navbar } from '@/components/navbar';
-import { Hero } from '@/components/hero';
+import { redirect } from 'next/navigation';
 
 export default function HomePage() {
-  return (
-    <div className="flex min-h-screen flex-col">
-      <Navbar />
-      <main className="flex-1">
-        <Hero />
-      </main>
-    </div>
-  );
+  redirect('/dashboard');
 }
