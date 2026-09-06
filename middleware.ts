@@ -6,19 +6,43 @@ import { decrypt } from './src/lib/session';
 const intlMiddleware = createMiddleware(routing);
 
 // Routes that require authentication
-const protectedRoutes = ['/dashboard', '/setup', '/settings'];
+const protectedRoutes = [
+  '/dashboard',
+  '/setup',
+  '/settings',
+  '/projects',
+  '/record',
+  '/profile',
+  '/help',
+];
 // Routes that should redirect to dashboard if already authenticated
 const authRoutes = ['/login', '/signup', '/forgot-password'];
 
+function getLocaleFromPathname(pathname: string): string {
+  const locales = routing.locales as readonly string[];
+  return (
+    locales.find(
+      (locale) =>
+        pathname === `/${locale}` || pathname.startsWith(`/${locale}/`),
+    ) ?? routing.defaultLocale
+  );
+}
+
+function stripLocale(pathname: string): string {
+  const locales = routing.locales as readonly string[];
+  for (const locale of locales) {
+    if (pathname === `/${locale}`) return '/';
+    if (pathname.startsWith(`/${locale}/`)) {
+      return pathname.slice(locale.length + 1) || '/';
+    }
+  }
+  return pathname;
+}
+
 export default async function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
-
-  // Strip locale prefix to get bare pathname for matching
-  const locales = routing.locales as readonly string[];
-  const pathnameWithoutLocale = locales.reduce(
-    (p, locale) => p.replace(new RegExp(`^/${locale}`), '') || '/',
-    pathname,
-  );
+  const pathnameWithoutLocale = stripLocale(pathname);
+  const locale = getLocaleFromPathname(pathname);
 
   const isProtectedRoute = protectedRoutes.some(
     (route) =>
@@ -35,20 +59,17 @@ export default async function middleware(req: NextRequest) {
   const session = sessionCookie ? await decrypt(sessionCookie) : null;
 
   if (isProtectedRoute && !session) {
-    // Redirect to login, preserve locale
-    const locale =
-      locales.find((l) => pathname.startsWith(`/${l}`)) ??
-      routing.defaultLocale;
     const loginUrl = new URL(`/${locale}/login`, req.url);
     loginUrl.searchParams.set('from', pathname);
     return NextResponse.redirect(loginUrl);
   }
 
   if (isAuthRoute && session) {
-    // Already logged in — redirect to dashboard
-    const locale =
-      locales.find((l) => pathname.startsWith(`/${l}`)) ??
-      routing.defaultLocale;
+    return NextResponse.redirect(new URL(`/${locale}/dashboard`, req.url));
+  }
+
+  // Locale root (`/`, `/en`, `/zh-CN`, …) → localized dashboard
+  if (pathnameWithoutLocale === '/') {
     return NextResponse.redirect(new URL(`/${locale}/dashboard`, req.url));
   }
 

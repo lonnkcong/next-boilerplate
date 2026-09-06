@@ -1,6 +1,7 @@
 'use server';
 
-import { redirect } from 'next/navigation';
+import { getLocale } from 'next-intl/server';
+import { redirect } from '@/i18n/navigation';
 import { createSession, deleteSession } from '@/lib/session';
 
 // Placeholder credentials — replace with real DB lookup
@@ -34,10 +35,12 @@ export async function loginAction(
   }
 
   await createSession(PLACEHOLDER_USER.id, PLACEHOLDER_USER.email);
-  redirect('/dashboard');
+  const locale = await getLocale();
+  redirect({ href: '/dashboard', locale });
 }
 
 export async function logoutAction() {
   await deleteSession();
-  redirect('/login');
+  const locale = await getLocale();
+  redirect({ href: '/login', locale });
 }
