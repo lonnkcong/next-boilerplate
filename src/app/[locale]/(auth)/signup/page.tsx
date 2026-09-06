@@ -38,9 +38,7 @@ export default function SignupPage() {
               <h1 className="font-heading text-xl font-bold text-white">
                 Create account
               </h1>
-              <p className="mt-1 text-sm text-white/50">
-                Sign up for Voxudio
-              </p>
+              <p className="mt-1 text-sm text-white/50">Sign up for Voxudio</p>
             </div>
           </div>
 
