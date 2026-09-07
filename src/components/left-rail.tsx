@@ -1,6 +1,7 @@
 'use client';
 
 import * as React from 'react';
+import { motion } from 'motion/react';
 import { usePathname } from 'next/navigation';
 import { Link } from '@/i18n/navigation';
 import { cn } from '@/lib/utils';
@@ -19,6 +20,7 @@ import {
   FileAudio,
   HelpCircle,
 } from 'lucide-react';
+import { fadeInLeft } from '@/lib/motion';
 
 type NavItem = {
   label: string;
@@ -86,8 +88,11 @@ export function LeftRail() {
 
   return (
     <TooltipProvider delay={200}>
-      <aside
+      <motion.aside
         id="left-rail"
+        initial="hidden"
+        animate="visible"
+        variants={fadeInLeft}
         className="bg-background/90 fixed top-14 bottom-0 left-0 z-40 flex w-14 flex-col items-center border-r border-white/8 py-3 backdrop-blur-md"
       >
         {/* Main nav */}
@@ -104,7 +109,7 @@ export function LeftRail() {
             <NavItemButton key={item.href} item={item} pathname={pathname} />
           ))}
         </div>
-      </aside>
+      </motion.aside>
     </TooltipProvider>
   );
 }

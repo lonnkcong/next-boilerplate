@@ -1,6 +1,7 @@
 'use client';
 
 import * as React from 'react';
+import { motion } from 'motion/react';
 import { logoutAction } from '@/lib/auth';
 import { ThemeToggle } from '@/components/theme-toggle';
 import { Button } from '@/components/ui/button';
@@ -16,6 +17,7 @@ import {
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { AudioWaveform, LogOut, Settings, User } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
+import { fadeInDown } from '@/lib/motion';
 
 interface TopNavProps {
   userEmail?: string | null;
@@ -27,8 +29,11 @@ export function TopNav({ userEmail }: TopNavProps) {
     : 'U';
 
   return (
-    <header
+    <motion.header
       id="top-nav"
+      initial="hidden"
+      animate="visible"
+      variants={fadeInDown}
       className="bg-background/80 fixed top-0 right-0 left-0 z-50 flex h-14 items-center border-b border-white/8 px-4 backdrop-blur-md"
     >
       {/* Logo — aligned with left rail width */}
@@ -116,6 +121,6 @@ export function TopNav({ userEmail }: TopNavProps) {
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
-    </header>
+    </motion.header>
   );
 }
