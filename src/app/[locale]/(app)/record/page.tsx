@@ -37,13 +37,6 @@ export default function RecordPage() {
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-6">
-          {/* Recording preview area */}
-          <div className="flex aspect-video items-center justify-center rounded-lg border border-white/10 bg-black/20">
-            <div className="text-center">
-              <Video className="mx-auto h-12 w-12 text-muted-foreground/50" />
-              <p className="text-muted-foreground mt-2 text-sm">Preview area</p>
-            </div>
-          </div>
 
           {/* Device selection */}
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
