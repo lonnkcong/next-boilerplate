@@ -431,3 +431,26 @@ Icon color conventions:
 [ ] i18n keys added to en.json, zh-CN.json, zh-TW.json (or TODO: i18n comment)
 [ ] pnpm format run before committing
 ```
+
+## Pending Questions
+
+## Recommendations Summary
+
+**Design Tokens:**
+- Add brand color palette (violet/indigo) as CSS variables to formalize the accent system
+- Update chart colors to match the documented brand palette instead of grayscale
+- Consider formalizing spacing scale as CSS variables (`--spacing-page-section`, etc.)
+- Tokenize border patterns like `border-white/8` as `--border-subtle`
+
+**Routing Structure:**
+- Consider adding loading/error boundary layouts for better UX
+- Current structure is solid - minimal changes needed
+
+**Motion/Framer Motion:**
+- Create shared animation components in `src/components/animations/`
+- Add animation utilities file for reusable motion variants
+- Consider layout animations for smoother route transitions
+- Keep current page-level animation pattern
+
+**Documentation:**
+- Add Base UI `render` prop pattern documentation for developer onboarding
